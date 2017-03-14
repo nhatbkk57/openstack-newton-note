@@ -333,10 +333,10 @@ CREATE DATABASE nova_api;
 
 CREATE DATABASE nova;
 
-GRANT ALL PRIVILEGES ON nova.* TO 'nova_api'@'localhost' \
+GRANT ALL PRIVILEGES ON nova_api.* TO 'nova'@'localhost' \
   IDENTIFIED BY 'openstack';
 
-GRANT ALL PRIVILEGES ON nova.* TO 'nova_api'@'%' \
+GRANT ALL PRIVILEGES ON nova_api.* TO 'nova'@'%' \
   IDENTIFIED BY 'openstack';
 
 GRANT ALL PRIVILEGES ON nova.* TO 'nova'@'localhost' \
@@ -444,7 +444,7 @@ CREATE DATABASE neutron;
 GRANT ALL PRIVILEGES ON neutron.* TO 'neutron'@'localhost' \
   IDENTIFIED BY 'openstack';
 
-GRANT ALL PRIVILEGES ON neutron.* TO 'neutron'@'localhost' \
+GRANT ALL PRIVILEGES ON neutron.* TO 'neutron'@'%' \
   IDENTIFIED BY 'openstack';
 ```
 Create Neutron credentials:
@@ -813,6 +813,8 @@ Create Database:
 ```
 mysql -u root -p
 
+CREATE DATABASE cinder;
+
 GRANT ALL PRIVILEGES ON cinder.* TO 'cinder'@'localhost' \
   IDENTIFIED BY 'openstack';
 
@@ -975,4 +977,4 @@ rados_connect_timeout = -1
 rbd_user = cinder
 rbd_secret_uuid = {uuid-value}
 report_discard_supported = true
-```
+```
